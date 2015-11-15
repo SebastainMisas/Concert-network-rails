@@ -1,0 +1,46 @@
+<center>
+	<h1>Create concert:</h1><br>
+	<a href="/concerts">Back</a><br>
+
+	<%= form_for @concerts do |f| %>
+		<%= f.label :artist %><br>
+		<%= f.text_field :artist %><br>
+		<% @concerts.errors[:artist].each do |err| %>
+			<%= err %><br>
+		<%end%>
+
+		<%= f.label :date  %><br>
+		<%= f.date_field :date %><br>
+		<% @concerts.errors[:date].each do |err| %>
+			<%= err %><br>
+		<%end%>
+
+		<%= f.label :city %><br>
+		<%= f.text_field :city %><br>
+		<% @concerts.errors[:city].each do |err| %>
+			<%= err %><br>
+		<%end%>
+
+		<%= f.label :venue %><br>
+		<%= f.text_field :venue %><br>
+		<% @concerts.errors[:venue].each do |err| %>
+			<%= err %><br>
+		<%end%>
+
+		<%= f.label :price %><br>
+		$<%= f.number_field :price %><br>
+		<% @concerts.errors[:price].each do |err| %>
+			<%= err %><br>
+		<%end%>
+
+		<%= f.label :description%><br>
+		<%= f.text_area :description %><br>
+		400 max<br>
+		<% @concerts.errors[:description].each do |err| %>
+			<%= err %><br>
+		<%end%>
+
+		<button type="submit">Post</button>
+
+	<% end %>
+</center>

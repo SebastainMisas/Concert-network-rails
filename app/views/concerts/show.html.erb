@@ -1,0 +1,19 @@
+<center>
+	<a href="/concerts">Back</a>
+	<h1><%= @concerts.artist %></h1>
+	<h1><%= @concerts.date %></h1>
+	<h1><%= @concerts.city %></h1>
+	<h1><%= @concerts.venue %></h1>
+	<h1>$ <%= @concerts.price %></h1>
+	<h1><%= @concerts.description %></h1>
+	<a href="/concerts/<%=@concerts.id%>/comments/new">Comment</a>
+	<h1>Comments</h1>
+	
+		<%@concerts.comments.each do |comment|%>
+			<%= comment.updated_at%><br>
+			<div class="comments">
+				<%= comment.description %><br>
+			</div><br>
+		<%end%>
+	
+</center>

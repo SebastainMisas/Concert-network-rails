@@ -1,0 +1,9 @@
+<center>
+	<h1>Create comment</h1>
+	<a href="/concerts">Back</a><br><br>
+	<%= form_for [@concert, @comment] do |f|%>
+		<%= f.text_area :description %><br>
+		<button type="submit">Post</button>
+
+	<%end%>
+</center>

@@ -1,0 +1,57 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="col-sm-6">
+				<h1>Today's concerts:</h1><br>
+				<a href="/">Home</a><br>
+				<a href="/concerts/new">Post Concert</a><br><br>
+				
+				<% @concerts_list.each do |concert| %>
+					<%if concert.date == Date.today %>
+						
+							<h1><strong><%= concert.artist %></strong></h1><br>
+						<ul>
+							<strong>Date:</strong>
+							<%= concert.date %><br>
+							<strong>City:</strong>
+							<%= concert.city %><br>
+							<strong>Venue:</strong>
+							<%= concert.venue %><br>
+							<strong>Price:</strong>
+							$<%= concert.price %><br>
+							<strong>Description:</strong>
+							<%= concert.description %><br>
+						</ul>
+							<h1>Comments</h1>
+							<a href="/concerts/<%=concert.id%>/comments/new">Make Comment</a><br><br>
+							
+						
+						<% concert.comments.each do |comment| %>
+							<%=comment.updated_at%>
+							<div class="comments">
+								<%= comment.description %><br>
+							</div><br>
+						<%end%>
+						<h2>------------------------</h2><br>
+					<% end %>
+				<%end%>
+			</div>
+
+
+			<div class="col-sm-3">
+				<h1>Upcoming:</h1>
+				<% @concerts_list.each do |concert| %>
+					<%if concert.date != Date.today %>
+						<a href="concerts/<%=concert.id%>"><%=concert.artist%></a><br>
+						<%=concert.date%><br>
+						-------------------------------------<br>
+					<% end %>
+				<%end%>
+			</div>
+		</div>
+	</body>
